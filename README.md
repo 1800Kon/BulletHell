@@ -37,6 +37,6 @@ Free to use sprites and sound effects which are provided by kenney.nl will be ut
 | Enemy (5 damage) | Shoots 2 bullets and both bullets collide with the 10 hp player | Player has 0 hp left, the die() method executes on the Player followed by the explode() method and the game ends|
 | Player (50% fuel) | Tries to refuel | Refuel() is executed and the fuel amount increases |
 | Player (100% fuel) | Tries to refuel | Refuel() is executed and the fuel amount stays at 100% |
-| Bullet | Doesn't hit anything and goes outside the screen | Bullet checks it's position and executes de die() method once off screen |
+| Bullet | Doesn't hit anything and goes outside the screen | Bullet checks it's position and executes the die() method once off screen |
 | Bullet from Player (5 damage) | Collides with enemy | Deals 5 damage to the enemy |
 | Player (10 hp) | Enemy deals 10 damage to Player | Player has 0 hp left and the game ends |
