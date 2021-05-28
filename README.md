@@ -7,7 +7,7 @@ Bullet hell is a genre of video games in which the user must dodge a large amoun
 * The laser gun is fired by clicking the left and right click mouse button in alternation.
 * The ship must be refueled every so often otherwise he won't be able to move and will soon be destroyed by his enemies.
 * Different enemies have different shooting patterns, ranging from straight shots to curved and multiple bullets at once.
-* If a bullet collides with the player’s ship it will explode and the run is over counting as a loss.
+* If enough bullets collide with the player’s ship it will explode and the run is over counting as a loss.
 * The player may beat the game by shooting down all of his enemies and beating the final boss, after which the game ends.
 
 ## Objective
