@@ -11,7 +11,7 @@ Bullet hell is a genre of video games in which the user must dodge a large amoun
 * The player may beat the game by shooting down all of his enemies and beating the final boss, after which the game ends.
 
 ## Objective
-The main objective of the game is to shoot down all of the enemy ships and defeat the final boss of the game without getting hit.
+The main objective of the game is to shoot down all of the enemy ships and defeat the final boss of the game without dying getting hit.
 
 ## Technology used
 The game will make use of the HTML5 canvas to draw elements to the screen and utilize javascript for all the necessary logic. The p5.js framework will be used as it provides the possibility to implement an efficient collision detection system which is vital for the proper functionality of the game. Jquery will also be utilized for certain functions of the game and .
@@ -21,3 +21,22 @@ Free to use sprites and sound effects which are provided by kenney.nl will be ut
 
 ## Class diagram
 ![Class diagram](https://i.imgur.com/FkIOito.png)
+
+## Test plan
+
+| Test subject | Test situation | Expected result |
+| --- | --- | --- |
+| Player | Presses WASD | Player's ship moves in the direction which was inputed |
+| Player | Presses WASD while out of fuel | Player's ship doesn't move |
+| Player | Presses left click | Player's ship shoots once |
+| Player | Presses left click after pressing left click once | Player's ship doesn't shoot |
+| Player | Presses left click and right click alternatively | Player's ship shoots continuosly |
+| Player (5 damage) | Shoots and bullet collides with a 10 hp enemy | Enemy has 5 hp left |
+| Player (10 hp) | Enemy with 5 damage shoots and bullet collides with player | Player has 5 hp left |
+| Player (5 damage) | Shoots 2 bullets and both bullets collide with a 10 hp enemy | Enemy has 0 hp left, the die() method executes on the enemy followed by the explode() method |
+| Enemy (5 damage) | Shoots 2 bullets and both bullets collide with the 10 hp player | Player has 0 hp left, the die() method executes on the Player followed by the explode() method and the game ends|
+| Player (50% fuel) | Tries to refuel | Refuel() is executed and the fuel amount increases |
+| Player (100% fuel) | Tries to refuel | Refuel() is executed and the fuel amount stays at 100% |
+| Bullet | Doesn't hit anything and goes outside the screen | Bullet checks it's position and executes de die() method once off screen |
+| Bullet from Player (5 damage) | Collides with enemy | Deals 5 damage to the enemy |
+| Player (10 hp) | Enemy deals 10 damage to Player | Player has 0 hp left and the game ends |
