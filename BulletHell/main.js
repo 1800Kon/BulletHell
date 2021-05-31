@@ -1,7 +1,10 @@
 function setup() {
     createCanvas(400, 700);
+    bg = loadImage('Assets/Backgrounds/darkPurple.png');
+    player = new Player(500);
 }
 
 function draw() {
-    background(50, 89, 100);
+    background(bg);
+    player.draw();
 }

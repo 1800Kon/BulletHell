@@ -9,7 +9,6 @@ class Spaceship {
         var particleSystem;
         var bullerSpawner;
     }
-    spawn() {}
     shoot() {}
     explode() {}
     move() {}

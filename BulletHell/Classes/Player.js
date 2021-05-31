@@ -1,10 +1,10 @@
-class extends Spaceship {
+class Player extends Spaceship {
     constructor(hp) {
-        this.hp = hp;
-        this.sprite;
-        this.alive = true;
+        this.sprite = loadImage('./Assets/PNG/playerShip1_green.png');
     }
-    spawn() {}
+    draw() {
+        image(sprite);
+    }
     shoot() {}
     explode() {}
     move() {}
