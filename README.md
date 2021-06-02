@@ -20,7 +20,7 @@ The game will make use of the HTML5 canvas to draw elements to the screen and ut
 Free to use sprites and sound effects which are provided by kenney.nl will be utilized as they are high quality and would complement the main style of the game.
 
 ## Class diagram
-![Class diagram](https://i.imgur.com/FkIOito.png)
+![Class diagram](https://i.imgur.com/0wQ37qC.png)
 
 ## Test plan
 
