@@ -14,7 +14,7 @@ Bullet hell is a genre of video games in which the user must dodge a large amoun
 The main objective of the game is to shoot down all of the enemy ships and defeat the final boss of the game without dying getting hit.
 
 ## Technology used
-The game will make use of the HTML5 canvas to draw elements to the screen and utilize javascript for all the necessary logic. The p5.js framework will be used as it provides the possibility to implement an efficient collision detection system which is vital for the proper functionality of the game. Jquery will also be utilized for certain functions of the game and .
+The game will make use of the HTML5 canvas to draw elements to the screen and utilize javascript for all the necessary logic. The p5.js framework will be used as it provides the possibility to implement an efficient collision detection system which is vital for the proper functionality of the game. Jquery will also be utilized for certain functions of the game.
 
 ## Art
 Free to use sprites and sound effects which are provided by kenney.nl will be utilized as they are high quality and would complement the main style of the game.
