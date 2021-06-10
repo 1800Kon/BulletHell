@@ -1,38 +1,23 @@
 class Spaceship {
-    constructor(spawnX, spawnY) {
-        this.position = createVector(spawnX, spawnY);
-        this.velocity = createVector();
-        this.hitbox = 0;
-        this.dead = false;
-        this.type;
-    }
-    showOnScreen() {}
-
-    actionOnTick() {
-        this.showOnScreen();
+    constructor(position, velocity, hitboxSize, hp, sprite, damage, bulletSpeed) {
+        this.position = position;
+        this.velocity = velocity;
+        this.hitboxSize = hitboxSize;
+        this.hp = hp;
+        this.sprite = sprite;
+        this.damage = damage;
+        this.bulletSpeed = bulletSpeed;
     }
 
-    outsideMap() {
-        let mapWidth = 400;
-        let mapHeight = 700;
-        let hitbox = hitbox;
-        let xPos = this.position.x;
-        let yPos = this.position.y;
-        if ((xPos - r) < 0) {
-            this.die();
-        }
-        if ((xPos + r) > mapWidth) {
-            this.die();
-        }
-        if ((yPos - r) < 0) {
-            this.die();
-        }
-        if ((yPos + r) > mapHeight) {
-            this.die();
-        }
+    display() {
+        push();
+        imageMode(CENTER)
+        translate(this.position.x, this.position.y);
+        image(this.sprite, 0, 0, this.hitboxSize.x, this.hitboxSize.y);
+        pop();
     }
 
-    die() {
-        this.dead = true;
+    tickUpdate() {
+        this.position.add(this.velocity);
     }
 }

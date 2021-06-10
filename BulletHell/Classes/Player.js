@@ -1,36 +1,22 @@
+let lastKey = 90;
 class Player extends Spaceship {
-    constructor(posX, posY) {
-        super(posX, posY);
-        this.hitbox = 5;
-        this.type = "player";
-        this.lastShotKeyPressed = 65;
+    constructor(position, velocity, hitboxSize, hp, sprite, damage, bulletSpeed) {
+        super(position, velocity, hitboxSize, hp, sprite, damage, bulletSpeed);
     }
-    actionOnTick() {
-        this.control();
-        super.actionOnTick();
-    }
-    control() {
-        // Make the shooting alternate
-        if (keyIsDown(65) && this.lastShotKeyPressed != 65) {
-            this.shoot();
-            this.lastShotKeyPressed = 65;
-        }
-        if (keyIsDown(83) && this.lastShotKeyPressed != 83) {
-            this.shoot();
-            this.lastShotKeyPressed = 83;
-        }
-        //Movement left right up down
-        if (keyIsDown(LEFT_ARROW)) {
-            this.velocity = createVector(-this.speed, 0);
-        }
-        if (keyIsDown(RIGHT_ARROW)) {
-            this.velocity = createVector(this.velocity, 0);
-        }
-        if (keyIsDown(UP_ARROW)) {
-            this.velocity = createVector(0, -this.velocity);
-        }
-        if (keyIsDown(DOWN_ARROW)) {
-            this.velocity = createVector(0, this.velocity);
+
+    keyPressed(sprite) {
+        if (keyCode === 90) {
+            if (lastKey != 90) {
+                lastKey = 90;
+                return new Bullet(createVector(this.position.x, this.position.y), createVector(0, -this.bulletSpeed), createVector(1, 1), sprite);
+            }
+        } else if (keyCode === 88) {
+            if (lastKey != 88) {
+                lastKey = 88;
+                return new Bullet(createVector(this.position.x, this.position.y), createVector(0, -this.bulletSpeed), createVector(1, 1), sprite);
+            } else {
+                return null;
+            }
         }
     }
 }
