@@ -17,6 +17,10 @@ class Spaceship {
         pop();
     }
 
+    collisionDetection(collidedWith) {
+        return ((this.pos.dist(collidedWith) < collidedWith.hitboxSize / 2));
+    }
+
     tickUpdate() {
         this.position.add(this.velocity);
     }

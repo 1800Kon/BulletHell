@@ -4,6 +4,7 @@ class Game {
     }
     init() {
         this.bulletsOnScreen = [];
+        this.enemiesOnScreen = [];
         this.player = new Player(createVector(200, 600), createVector(0, 0), createVector(50, 50), 100, this.spriteManager.playerSprite, 10, 10);
     }
     loadSprites() {
@@ -17,12 +18,10 @@ class Game {
         if (bullet != null) {
             this.bulletsOnScreen.push(bullet);
         }
-        if (this.bulletsOnScreen.length > 0) {
-            this.bulletsOnScreen.forEach(b => {
-                b.display();
-                b.tickUpdate();
-            });
-        }
+        this.bulletsOnScreen.forEach(b => {
+            b.tickUpdate();
+            b.display();
+        })
     }
     frameUpdate() {
         this.display();
