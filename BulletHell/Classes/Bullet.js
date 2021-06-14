@@ -16,11 +16,8 @@ class Bullet {
     }
 
     collisionDetection(collidedWith) {
-        return ((this.pos.dist(collidedWith) < collidedWith.hitboxSize / 2));
-    }
-
-    collisionDetection(collidedWith) {
-        return ((this.pos.dist(collidedWith) < collidedWith.hitboxSize / 2));
+        this.distance = this.position.dist(collidedWith.position);
+        return ((this.position.dist(collidedWith.position) < collidedWith.hitboxSize.x / 2));
     }
 
     tickUpdate() {
