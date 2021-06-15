@@ -49,7 +49,7 @@ class Game {
     }
     frameUpdate() {
         this.display();
-        if (frameCount % 900 === 0) {
+        if (frameCount % 200 === 0) {
             const en = new Enemy(createVector(200, 100), createVector(0, 1), createVector(50, 50), 100, this.spriteManager.enemy1Sprite, 10, 10)
             this.enemiesOnScreen.push(en);
         }
