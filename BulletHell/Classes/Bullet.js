@@ -1,11 +1,12 @@
 class Bullet {
-    constructor(position, velocity, hitboxSize, sprite) {
+    constructor(position, velocity, hitboxSize, sprite, fromPlayer) {
         this.position = position;
         this.velocity = velocity;
         this.hitboxSize = hitboxSize;
         this.sprite = loadImage("./Assets/PNG/Lasers/laserBlue01.png");
         this.bulletSpeed = 1;
         this.dead = false;
+        this.fromPlayer = fromPlayer;
     }
 
     display() {
