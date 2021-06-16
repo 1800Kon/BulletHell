@@ -7,6 +7,7 @@ class Spaceship {
         this.sprite = sprite;
         this.damage = damage;
         this.bulletSpeed = bulletSpeed;
+        this.dead = false;
     }
 
     display() {

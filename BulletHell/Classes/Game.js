@@ -22,30 +22,38 @@ class Game {
         this.enemyLogic();
     }
     displayBullets() {
-        this.bulletsOnScreen.forEach(b => {
+        for (let i = 0; i < this.bulletsOnScreen.length; i++) {
+            const b = this.bulletsOnScreen[i];
+            if (b.dead) {
+                this.bulletsOnScreen.splice(i, 1)
+            }
             b.tickUpdate();
             b.display();
             if (b.position.y > 775 || b.position.y < 0 || b.position.x < 0 || b.position.x > 800) {
-                this.bulletsOnScreen.pop(b);
+                b.dead = true;
             }
-        })
+        }
     }
     enemyLogic() {
-        this.enemiesOnScreen.forEach(e => {
+        for (let i = 0; i < this.enemiesOnScreen.length; i++) {
+            const e = this.enemiesOnScreen[i];
             e.tickUpdate();
             e.display();
-            if (this.bulletsOnScreen.length > 0) {
-                this.bulletsOnScreen.forEach(b => {
-                    if (b.collisionDetection(e)) {
-                        e.hp = e.hp -= this.player.damage;
-                        if (e.hp == 0) {
-                            this.enemiesOnScreen.pop(e);
-                        }
-                        this.bulletsOnScreen.pop(b);
-                    }
-                })
+            if (e.dead) {
+                e.splice(i, 1);
             }
-        })
+            for (let j = 0; j < this.bulletsOnScreen.length; j++) {
+                const b = this.bulletsOnScreen[j];
+                if (b.collisionDetection(e)) {
+                    e.hp = e.hp -= this.player.damage;
+                    if (e.hp == 0) {
+                        this.enemiesOnScreen.splice(i, 1);
+                    }
+                    this.bulletsOnScreen.splice(j, 1);
+                }
+            }
+
+        }
     }
     frameUpdate() {
         this.display();

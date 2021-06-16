@@ -5,6 +5,7 @@ class Bullet {
         this.hitboxSize = hitboxSize;
         this.sprite = loadImage("./Assets/PNG/Lasers/laserBlue01.png");
         this.bulletSpeed = 1;
+        this.dead = false;
     }
 
     display() {
