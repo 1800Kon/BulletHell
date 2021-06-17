@@ -6,7 +6,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(400, 800);
+    createCanvas(1000, 800);
     bg = loadImage('Assets/Backgrounds/darkPurple.png');
     for (let element of document.getElementsByClassName("p5Canvas")) {
         element.addEventListener("contextmenu", (e) => e.preventDefault());

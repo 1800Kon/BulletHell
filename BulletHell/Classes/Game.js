@@ -6,13 +6,13 @@ class Game {
         this.bulletsOnScreen = [];
         this.enemiesOnScreen = [];
         this.enemyBulletsOnScreen = [];
-        this.player = new Player(createVector(200, 600), createVector(0, 0), createVector(50, 50), 100, this.spriteManager.playerSprite, 50, 10, this.spriteManager.playerBulletSprite);
+        this.player = new Player(createVector(200, 600), createVector(0, 0), createVector(25, 25), 100, this.spriteManager.playerSprite, 50, 10, this.spriteManager.playerBulletSprite);
     }
     loadSprites() {
         this.spriteManager.preload();
     }
     display() {
-        this.player.position.x = constrain(mouseX, 25, 375);
+        this.player.position.x = constrain(mouseX, 25, 975);
         this.player.position.y = constrain(mouseY, 25, 775);
         this.player.display();
         const bullet = this.player.keyPressed(this.spriteManager.playerBulletSprite);
@@ -33,7 +33,7 @@ class Game {
             }
             b.tickUpdate();
             b.display();
-            if (b.position.y > 775 || b.position.y < 0 || b.position.x < 0 || b.position.x > 800) {
+            if (b.position.y > 800 || b.position.y < 0 || b.position.x < 0 || b.position.x > 1000) {
                 b.dead = true;
             }
         }
@@ -43,14 +43,19 @@ class Game {
             const e = this.enemiesOnScreen[i];
             e.tickUpdate();
             e.display();
-            const enemyBullet = e.shoot();
-            if (enemyBullet != null) {
-                this.bulletsOnScreen.push(enemyBullet);
+            var enemyBullet = e.shoot();
+            if (enemyBullet != undefined) {
+                for (let k = 0; k < enemyBullet.length; k++) {
+                    const bullet = enemyBullet[k];
+                    if (bullet != null) {
+                        this.bulletsOnScreen.push(bullet);
+                    }
+                }
             }
             if (e.dead) {
                 this.enemiesOnScreen.splice(i, 1);
             }
-            if (e.position.y > 775 || e.position.y < 0 || e.position.x < 0 || e.position.x > 800) {
+            if (e.position.y > 775 || e.position.y < 0 || e.position.x < 0 || e.position.x > 1000) {
                 e.dead = true;
             }
             for (let j = 0; j < this.bulletsOnScreen.length; j++) {
@@ -73,8 +78,8 @@ class Game {
         }
     }
     generateEnemy() {
-        if (frameCount % 200 === 0) {
-            const en = new Enemy(createVector(200, 100), createVector(0, 1), createVector(50, 50), 100, this.spriteManager.enemy1Sprite, 10, -5, this.spriteManager.enemyBulletSprite)
+        if (frameCount % 50 === 0) {
+            const en = new Enemy(createVector(Math.floor(Math.random() * 975) + 25, 10), createVector(0, 1), createVector(50, 50), 100, this.spriteManager.enemy1Sprite, 10, -5, this.spriteManager.enemyBulletSprite)
             this.enemiesOnScreen.push(en);
         }
     }
