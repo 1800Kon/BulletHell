@@ -5,6 +5,7 @@ class Game {
     init() {
         this.bulletsOnScreen = [];
         this.enemiesOnScreen = [];
+        this.resetGameFlag = true;
         this.enemyBulletsOnScreen = [];
         this.player = new Player(createVector(200, 600), createVector(0, 0), createVector(25, 25), 100, this.spriteManager.playerSprite, 50, 10, this.spriteManager.playerBulletSprite);
     }
@@ -22,6 +23,11 @@ class Game {
         this.displayBullets();
         this.enemyLogic();
         if (this.player.hp == 0) {
+            if (this.resetGameFlag) {
+                alert("You died! Click OK to restart the game.");
+                window.location.reload();
+                this.resetGameFlag = false;
+            }
 
         }
     }
