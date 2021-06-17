@@ -3,7 +3,7 @@ class Bullet {
         this.position = position;
         this.velocity = velocity;
         this.hitboxSize = hitboxSize;
-        this.sprite = loadImage("./Assets/PNG/Lasers/laserBlue01.png");
+        this.sprite = sprite;
         this.bulletSpeed = 1;
         this.dead = false;
         this.fromPlayer = fromPlayer;

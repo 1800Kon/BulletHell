@@ -7,7 +7,11 @@ class Game {
         this.enemiesOnScreen = [];
         this.resetGameFlag = true;
         this.enemyBulletsOnScreen = [];
-        this.player = new Player(createVector(200, 600), createVector(0, 0), createVector(25, 25), 100, this.spriteManager.playerSprite, 50, 10, this.spriteManager.playerBulletSprite);
+        this.enemiesGenerated = 0;
+        this.bossFlag = true;
+        this.player = new Player(createVector(200, 600), createVector(0, 0), createVector(25, 25), 100, this.spriteManager.playerSprite, 20, 10, this.spriteManager.playerBulletSprite);
+        this.boss = new Enemy(createVector(Math.floor(Math.random() * 975) + 25, 10), createVector(0, 0.3), createVector(100, 100), 1000, this.spriteManager.enemy2Sprite, 20, -8, this.spriteManager.enemyBulletSprite3, 100)
+
     }
     loadSprites() {
         this.spriteManager.preload();
@@ -19,10 +23,13 @@ class Game {
         const bullet = this.player.keyPressed(this.spriteManager.playerBulletSprite);
         if (bullet != null) {
             this.bulletsOnScreen.push(bullet);
+            this.spriteManager.laserSound.play();
         }
         this.displayBullets();
         this.enemyLogic();
-        if (this.player.hp == 0) {
+        if (this.player.hp <= 0) {
+
+            this.spriteManager.lose.play();
             if (this.resetGameFlag) {
                 alert("You died! Click OK to restart the game.");
                 window.location.reload();
@@ -51,6 +58,7 @@ class Game {
             e.display();
             var enemyBullet = e.shoot();
             if (enemyBullet != undefined) {
+                this.spriteManager.enemyLaserSound.play();
                 for (let k = 0; k < enemyBullet.length; k++) {
                     const bullet = enemyBullet[k];
                     if (bullet != null) {
@@ -63,12 +71,14 @@ class Game {
             }
             if (e.position.y > 775 || e.position.y < 0 || e.position.x < 0 || e.position.x > 1000) {
                 e.dead = true;
+                this.player.hp = 0;
             }
             for (let j = 0; j < this.bulletsOnScreen.length; j++) {
                 const b = this.bulletsOnScreen[j];
                 if (b.fromPlayer) {
                     if (b.collisionDetection(e)) {
                         e.hp = e.hp -= this.player.damage;
+                        this.spriteManager.enemyHitSound.play();
                         if (e.hp == 0) {
                             this.enemiesOnScreen.splice(i, 1);
                         }
@@ -77,6 +87,7 @@ class Game {
                 } else {
                     if (b.collisionDetection(this.player)) {
                         this.player.hp = this.player.hp -= e.damage;
+                        this.spriteManager.playerHitSound.play();
                         this.bulletsOnScreen.splice(j, 1);
                     }
                 }
@@ -84,10 +95,36 @@ class Game {
         }
     }
     generateEnemy() {
-        if (frameCount % 50 === 0) {
-            const en = new Enemy(createVector(Math.floor(Math.random() * 975) + 25, 10), createVector(0, 1), createVector(50, 50), 100, this.spriteManager.enemy1Sprite, 10, -5, this.spriteManager.enemyBulletSprite)
-            this.enemiesOnScreen.push(en);
+        if (frameCount % 75 === 0) {
+            if (this.enemiesGenerated < 30) {
+                if (this.enemiesGenerated >= 25) {
+                    if (this.bossFlag) {
+                        this.enemiesOnScreen.push(this.boss);
+                        this.bossFlag = false;
+                    }
+                }
+                const en = new Enemy(createVector(Math.floor(Math.random() * 975) + 25, 10), createVector(0, 1), createVector(50, 50), 100, this.spriteManager.enemy1Sprite, 10, -5, this.spriteManager.enemyBulletSprite1, 150)
+                this.enemiesOnScreen.push(en);
+                this.enemiesGenerated++;
+            } else {
+                if (this.enemiesOnScreen.length == 0) {
+                    if (this.resetGameFlag) {
+                        alert("You Won! Click OK to play again.");
+                        window.location.reload();
+                        this.resetGameFlag = false;
+                    }
+                }
+            }
+            if (!this.bossFlag) {
+                if (this.boss.hp < 500) {
+                    this.boss.fireRate = 50;
+                    this.spriteManager.rage1.play();
+                    this.spriteManager.rage2.play();
+                    this.spriteManager.rage3.play();
+                }
+            }
         }
+
     }
     frameUpdate() {
         this.display();

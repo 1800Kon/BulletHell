@@ -1,8 +1,10 @@
 let game;
+let bgSong;
 
 function preload() {
     game = new Game();
     game.loadSprites();
+    bgSong = loadSound("Assets/Sounds/bgmusic.mp3");
 }
 
 function setup() {
@@ -13,6 +15,8 @@ function setup() {
         element.addEventListener("contextmenu", (e) => e.preventDefault());
     }
     game.init();
+    bgSong.play();
+    bgSong.setVolume(0.7);
 }
 
 function draw() {

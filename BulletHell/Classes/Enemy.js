@@ -1,11 +1,12 @@
 class Enemy extends Spaceship {
-    constructor(position, velocity, hitboxSize, hp, sprite, damage, bulletSpeed, bulletSprite) {
+    constructor(position, velocity, hitboxSize, hp, sprite, damage, bulletSpeed, bulletSprite, fireRate) {
         super(position, velocity, hitboxSize, hp, sprite, damage, bulletSpeed);
         this.bulletSprite = bulletSprite;
+        this.fireRate = fireRate;
     }
 
     shoot() {
-        if (frameCount % 100 === 0) {
+        if (frameCount % this.fireRate === 0) {
             const pattern = [];
             switch (Math.floor(Math.random() * 3) + 1) {
                 case 1:
