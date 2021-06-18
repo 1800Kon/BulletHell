@@ -11,6 +11,10 @@
 * If any of the enemies touches the bottom of the screen the game ends automatically
 * The only way to beat the game is to destroy the final boss which spawns towards the end of the level
 
+## Difficulty Notice!
+If the game seems too difficult to play, go to the Game.js file and go to line 97 (The beginning of the generateEnemy function), there you'll see the following line "frameCount % 100 === 0". If you wish to make the game easier, increase this number by 50 however many times you wish. 50 equals to half a second, so if you want the enemies to spawn every two seconds instead of every one second, the line of code would be as follows "frameCount % 200 === 0".
+
+
 ## Introduction
 Bullet hell is a genre of video games in which the user must dodge a large amount of bullets while simultaneously utilizing his own weapons to destroy enemies. Overtime I’ve noticed that most of these games focus their difficulty levels on the amount of bullets on screen, so I decided to change that by adding some extra elements to it.
 
