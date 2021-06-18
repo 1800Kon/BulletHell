@@ -77,4 +77,4 @@ Free to use sprites and sound effects which are provided by kenney.nl will be ut
 * Changed control scheme
 * Removed fuel system
 * Added multiple patterns to all enemies
-* Addedd boss rage mode
+* Added boss rage mode
