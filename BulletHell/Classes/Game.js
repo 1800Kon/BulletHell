@@ -94,15 +94,16 @@ class Game {
         }
     }
     generateEnemy() {
-        if (frameCount % 50 === 0) {
-            if (this.enemiesGenerated < 3) {
-                if (this.enemiesGenerated >= 2) {
+        // Change me for difficulty increase / reduction :^)
+        if (frameCount % 75 === 0) {
+            if (this.enemiesGenerated < 30) {
+                if (this.enemiesGenerated >= 20) {
                     if (this.bossFlag) {
                         this.enemiesOnScreen.push(this.boss);
                         this.bossFlag = false;
                     }
                 }
-                const en = new Enemy(createVector(Math.floor(Math.random() * 975) + 25, 10), createVector(0, 1), createVector(50, 50), 100, this.spriteManager.enemy1Sprite, 10, -5, this.spriteManager.enemyBulletSprite1, 100)
+                const en = new Enemy(createVector(Math.floor(Math.random() * 975) + 25, 10), createVector(0, 1), createVector(50, 50), 100, this.spriteManager.enemy1Sprite, 10, -5, this.spriteManager.enemyBulletSprite1, 130)
                 this.enemiesOnScreen.push(en);
                 this.enemiesGenerated++;
             } else {
