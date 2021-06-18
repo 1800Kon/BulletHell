@@ -6,7 +6,6 @@ class Game {
         this.bulletsOnScreen = [];
         this.enemiesOnScreen = [];
         this.resetGameFlag = true;
-        this.enemyBulletsOnScreen = [];
         this.enemiesGenerated = 0;
         this.bossFlag = true;
         this.player = new Player(createVector(200, 600), createVector(0, 0), createVector(25, 25), 100, this.spriteManager.playerSprite, 20, 10, this.spriteManager.playerBulletSprite);
@@ -95,15 +94,15 @@ class Game {
         }
     }
     generateEnemy() {
-        if (frameCount % 75 === 0) {
-            if (this.enemiesGenerated < 30) {
-                if (this.enemiesGenerated >= 25) {
+        if (frameCount % 50 === 0) {
+            if (this.enemiesGenerated < 3) {
+                if (this.enemiesGenerated >= 2) {
                     if (this.bossFlag) {
                         this.enemiesOnScreen.push(this.boss);
                         this.bossFlag = false;
                     }
                 }
-                const en = new Enemy(createVector(Math.floor(Math.random() * 975) + 25, 10), createVector(0, 1), createVector(50, 50), 100, this.spriteManager.enemy1Sprite, 10, -5, this.spriteManager.enemyBulletSprite1, 150)
+                const en = new Enemy(createVector(Math.floor(Math.random() * 975) + 25, 10), createVector(0, 1), createVector(50, 50), 100, this.spriteManager.enemy1Sprite, 10, -5, this.spriteManager.enemyBulletSprite1, 100)
                 this.enemiesOnScreen.push(en);
                 this.enemiesGenerated++;
             } else {
@@ -117,7 +116,7 @@ class Game {
             }
             if (!this.bossFlag) {
                 if (this.boss.hp < 500) {
-                    this.boss.fireRate = 50;
+                    this.boss.fireRate = 25;
                     this.spriteManager.rage1.play();
                     this.spriteManager.rage2.play();
                     this.spriteManager.rage3.play();

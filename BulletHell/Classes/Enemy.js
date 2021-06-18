@@ -6,7 +6,7 @@ class Enemy extends Spaceship {
     }
 
     shoot() {
-        if (frameCount % this.fireRate === 0) {
+        if (frameCount % this.fireRate == 0) {
             const pattern = [];
             switch (Math.floor(Math.random() * 3) + 1) {
                 case 1:
