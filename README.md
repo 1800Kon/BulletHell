@@ -14,7 +14,7 @@
 ## Introduction
 Bullet hell is a genre of video games in which the user must dodge a large amount of bullets while simultaneously utilizing his own weapons to destroy enemies. Overtime I’ve noticed that most of these games focus their difficulty levels on the amount of bullets on screen, so I decided to change that by adding some extra elements to it.
 
-## Main mechanics and core ideas
+## Main mechanics and core ideas [[[ORIGINAL - LOOK AT THE END OF THIS FILE TO VIEW CHANGES]]]
 * The player must guide a ship through space and destroy its enemies utilizing his laser gun.
 * The laser gun is fired by clicking the left and right click mouse button in alternation.
 * The ship must be refueled every so often otherwise it won't be able to move and will soon be destroyed by his enemies.
@@ -29,7 +29,7 @@ The main objective of the game is to shoot down all of the enemy ships and defea
 The game will make use of the HTML5 canvas to draw elements to the screen and utilize javascript for all the necessary logic. The p5.js framework will be used as it provides the possibility to implement an efficient collision detection system which is vital for the proper functionality of the game. Jquery will also be utilized for certain functions of the game.
 
 ## Art
-Free to use sprites and sound effects which are provided by kenney.nl will be utilized as they are high quality and would complement the main style of the game.
+Free to use sprites and sound effects which are provided by kenney.nl will be utilized as they are high quality and would complement the main style of the game. Music is provided by Marcin Szmuc.
 
 ## Class diagram [[[OLD]]]
 ![Class diagram](https://i.imgur.com/N4IYhJ7.png)
